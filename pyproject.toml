@@ -1,0 +1,14 @@
+[project]
+name = "openx-trader"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.136.1",
+    "pydantic>=2.13.4",
+    "python-json-logger>=4.1.0",
+    "pyyaml>=6.0.3",
+    "requests>=2.34.2",
+    "uvicorn>=0.34.3",
+]

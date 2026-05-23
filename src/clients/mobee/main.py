@@ -1,16 +1,20 @@
-import time, hmac, hashlib, base64, requests, json
-from src.core.config import settings
+import requests
+import time
+import hmac 
+import hashlib 
+import base64
+import json
+from src.core.config import get_config
 
 
 class MobeeOpenApi:
-    BASE_URL = settings.MOBEE_OPEN_API_URL
-
     def __init__(self, API_KEY: str, API_SECRET: str):
         """
         Initialize the MobeeOpenApi client with a secret key.
         """
         self.API_KEY = API_KEY
         self.API_SECRET = API_SECRET
+        self.BASE_URL = get_config().external.mobee.base_url
 
     def generate_signature(
         self, method: str, path: str, timestamp: str, body: str = None
@@ -40,10 +44,8 @@ class MobeeOpenApi:
             "X-Request-Timestamp": timestamp,
             "Content-Type": "application/json",
         }
-
         return headers
 
-    ## Wallets
     def get_balance(self, currency: str):
         """
         Get the balance of a specific currency.
@@ -61,7 +63,6 @@ class MobeeOpenApi:
         else:
             res.raise_for_status()
 
-    ## Orders
     def create_new_order(
         self, side: str, market: str, trade: str, type: str, volume: float
     ):
