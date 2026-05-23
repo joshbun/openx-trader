@@ -1,0 +1,8 @@
+InternalConfig:
+  AppName: "OpenX Trader"
+
+ExternalConfig:
+  Mobee:
+    BaseUrl: ""
+    ApiKey: ""
+    SecretKey: ""
